@@ -31,7 +31,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tweetTable.reloadData()
         // Do any additional setup after loading the view.
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadTweets()
+    }
     @objc func loadTweets(){
         numberOfTweets = 20
         let timelineURL = "https://api.twitter.com/1.1/statuses/home_timeline.json"
@@ -101,8 +104,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         cell.userImage.af_setImage(withURL: imageURL)
         
-        
-//        String(describing: self.movie["id"] as! intmax_t)
+        cell.setFavorite(tweetArray[indexPath.row]["favorited"] as! Bool)
+        cell.setRetweet(tweetArray[indexPath.row]["retweeted"] as! Bool)
+        cell.tweetId = tweetArray[indexPath.row]["id"] as! Int
         let likes = String(describing: tweetArray[indexPath.row]["favorite_count"] as! intmax_t)
         cell.likeCount.text = likes
         
