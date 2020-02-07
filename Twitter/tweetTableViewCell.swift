@@ -51,7 +51,10 @@ class tweetTableViewCell: UITableViewCell {
         print(tweetId)
         if(favorited){
             //goiung to unfavorite
-            TwitterAPICaller.client?.favoriteTweet(tweetId: tweetId, success: {
+            TwitterAPICaller.client?.unfavoriteTweet(tweetId: tweetId, success: {
+                var c = Int(self.likeCount.text!)
+                c = c! - 1
+                self.likeCount.text = "\(String(describing: c as! Int))"
                 self.setFavorite(false)
             }, failure: { (Error) in
                 print("Error occored \(Error)")
@@ -59,8 +62,11 @@ class tweetTableViewCell: UITableViewCell {
         }
         else{
             //going to favorite
-            TwitterAPICaller.client?.unfavoriteTweet(tweetId: tweetId, success: {
+            TwitterAPICaller.client?.favoriteTweet(tweetId: tweetId, success: {
                 self.setFavorite(true)
+                var c = Int(self.likeCount.text!)
+                c = c! + 1
+                self.likeCount.text = "\(String(describing: c as! Int))"
             }, failure: { (Error) in
                 print("Error occored \(Error)")
             })
