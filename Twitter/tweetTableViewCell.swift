@@ -28,6 +28,9 @@ class tweetTableViewCell: UITableViewCell {
         {
             TwitterAPICaller.client?.retweetTweet(tweetId: tweetId, success: {
             self.setRetweet(true)
+            var c = Int(self.retweetCount.text!)
+            c = c! + 1
+                self.retweetCount.text = "\(String(describing: c as! Int))"
         }, failure: { (Error) in
             print("error occored \(Error)")
         })
@@ -36,6 +39,9 @@ class tweetTableViewCell: UITableViewCell {
 
             TwitterAPICaller.client?.unretweetTweet(tweetId: tweetId, success: {
                 self.setRetweet(false)
+                var c = Int(self.retweetCount.text!)
+                c = c! - 1
+                    self.retweetCount.text = "\(String(describing: c as! Int))"
             }, failure: { (Error) in
                 print("Error occored \(Error)")
             })

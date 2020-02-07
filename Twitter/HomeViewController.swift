@@ -94,7 +94,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tweetTable.dequeueReusableCell(withIdentifier: "tweetTableViewCell", for: indexPath) as! tweetTableViewCell
-        
+        cell.userImage.layer.masksToBounds = false
+        cell.userImage.layer.cornerRadius = cell.userImage.frame.height/2
+        cell.userImage.clipsToBounds = true
         let user = tweetArray[indexPath.row]["user"] as! NSDictionary
         
         cell.userName.text = (user["screen_name"] as! String)

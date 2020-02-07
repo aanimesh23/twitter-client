@@ -15,7 +15,9 @@ class TweetViewController: UIViewController {
     @IBOutlet weak var TweetTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        UserProfileImage.layer.masksToBounds = false
+        UserProfileImage.layer.cornerRadius = UserProfileImage.frame.height/2
+        UserProfileImage.clipsToBounds = true
         TweetTextView.becomeFirstResponder()
         let url = "https://api.twitter.com/1.1/statuses/user_timeline.json"
         TwitterAPICaller.client?.getDictionariesRequest(url: url, parameters: [:], success: { (userInfo: [NSDictionary]) in
