@@ -23,7 +23,7 @@ The following **bonus** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://media.giphy.com/media/LS9kIW3sOmSWKVEVLo/giphy.mp4' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://media.giphy.com/media/LS9kIW3sOmSWKVEVLo/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 Twitter is a basic twitter app to read your tweets.
 
 Time spent: 6 hours spent in total
