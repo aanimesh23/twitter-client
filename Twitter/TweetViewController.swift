@@ -9,12 +9,14 @@
 import UIKit
 import AlamofireImage
 
-class TweetViewController: UIViewController {
+class TweetViewController: UIViewController, UITextViewDelegate {
 
+    @IBOutlet weak var CharCount: UILabel!
     @IBOutlet weak var UserProfileImage: UIImageView!
     @IBOutlet weak var TweetTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        TweetTextView.delegate = self
         UserProfileImage.layer.masksToBounds = false
         UserProfileImage.layer.cornerRadius = UserProfileImage.frame.height/2
         UserProfileImage.clipsToBounds = true
@@ -29,6 +31,21 @@ class TweetViewController: UIViewController {
             print("could not get userInfo")
         })
         // Do any additional setup after loading the view.
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+       // Set the max character limit
+       let characterLimit = 140
+
+       // Construct what the new text would be if we allowed the user's latest edit
+       let newText = NSString(string: TweetTextView.text!).replacingCharacters(in: range, with: text)
+    
+       // TODO: Update Character Count Label
+        var c = characterLimit
+        c = c - newText.count
+        self.CharCount.text = "\(String(describing: c))"
+       // The new text should be allowed? True/False
+       return newText.count < characterLimit
     }
     
     @IBAction func Cancel(_ sender: Any) {

@@ -248,18 +248,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xOJ-d0-Dhk">
-                                <rect key="frame" x="16" y="72" width="60" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xOJ-d0-Dhk">
+                                <rect key="frame" x="10" y="54" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="beZ-9E-9X0"/>
+                                    <constraint firstAttribute="height" constant="60" id="xID-y8-C8S"/>
+                                </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xE3-Va-93G">
-                                <rect key="frame" x="84" y="84" width="275" height="154"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xE3-Va-93G">
+                                <rect key="frame" x="78" y="69" width="297" height="96"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePR-Pj-sWr">
+                                <rect key="frame" x="346" y="173" width="28.5" height="21"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <color key="textColor" red="0.078431372550000003" green="0.090196078430000007" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="VCM-Zt-PDe" firstAttribute="trailing" secondItem="xE3-Va-93G" secondAttribute="trailing" id="2ag-p8-aFL"/>
+                            <constraint firstItem="xE3-Va-93G" firstAttribute="leading" secondItem="xOJ-d0-Dhk" secondAttribute="trailing" constant="8" id="3TV-oA-xlF"/>
+                            <constraint firstItem="VCM-Zt-PDe" firstAttribute="bottom" secondItem="xE3-Va-93G" secondAttribute="bottom" constant="502" id="CYX-y9-TIV"/>
+                            <constraint firstItem="xOJ-d0-Dhk" firstAttribute="top" secondItem="VCM-Zt-PDe" secondAttribute="top" constant="10" id="GuS-Hd-JEM"/>
+                            <constraint firstItem="xE3-Va-93G" firstAttribute="top" secondItem="VCM-Zt-PDe" secondAttribute="top" constant="25" id="OBP-qJ-gCl"/>
+                            <constraint firstItem="ePR-Pj-sWr" firstAttribute="top" secondItem="xE3-Va-93G" secondAttribute="bottom" constant="8" symbolic="YES" id="QJR-O7-g3E"/>
+                            <constraint firstItem="ePR-Pj-sWr" firstAttribute="top" secondItem="xE3-Va-93G" secondAttribute="bottom" constant="8" symbolic="YES" id="a92-ya-2Wc"/>
+                            <constraint firstItem="VCM-Zt-PDe" firstAttribute="trailing" secondItem="ePR-Pj-sWr" secondAttribute="trailing" id="k2a-fd-3wF"/>
+                            <constraint firstItem="xE3-Va-93G" firstAttribute="leading" secondItem="xOJ-d0-Dhk" secondAttribute="trailing" constant="8" id="kfH-rs-Iik"/>
+                            <constraint firstItem="VCM-Zt-PDe" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xE3-Va-93G" secondAttribute="bottom" constant="10" id="uB0-ly-WM2"/>
+                            <constraint firstItem="xOJ-d0-Dhk" firstAttribute="leading" secondItem="VCM-Zt-PDe" secondAttribute="leading" constant="10" id="v37-Iu-RvP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VCM-Zt-PDe"/>
                     </view>
                     <navigationItem key="navigationItem" title="Compose a Tweet" id="Puh-vV-gpG">
@@ -277,6 +298,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="CharCount" destination="ePR-Pj-sWr" id="3aG-K3-XcH"/>
                         <outlet property="TweetTextView" destination="xE3-Va-93G" id="F03-1p-4jP"/>
                         <outlet property="UserProfileImage" destination="xOJ-d0-Dhk" id="SGM-uq-Dei"/>
                     </connections>
